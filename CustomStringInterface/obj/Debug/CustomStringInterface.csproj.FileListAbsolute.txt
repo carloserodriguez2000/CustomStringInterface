@@ -1,6 +1,6 @@
 c:\users\user\documents\visual studio 2015\Projects\CustomStringInterface\CustomStringInterface\bin\Debug\CustomStringInterface.exe.config
 C:\Users\USER\Documents\Visual Studio 2015\Projects\CustomStringInterface\CustomStringInterface\bin\Debug\CustomStringInterface.exe
 C:\Users\USER\Documents\Visual Studio 2015\Projects\CustomStringInterface\CustomStringInterface\bin\Debug\CustomStringInterface.pdb
-C:\Users\USER\Documents\Visual Studio 2015\Projects\CustomStringInterface\CustomStringInterface\obj\Debug\CustomStringInterface.csprojResolveAssemblyReference.cache
 C:\Users\USER\Documents\Visual Studio 2015\Projects\CustomStringInterface\CustomStringInterface\obj\Debug\CustomStringInterface.exe
 C:\Users\USER\Documents\Visual Studio 2015\Projects\CustomStringInterface\CustomStringInterface\obj\Debug\CustomStringInterface.pdb
+C:\Users\USER\Documents\Visual Studio 2015\Projects\CustomStringInterface\CustomStringInterface\obj\Debug\CustomStringInterface.csprojResolveAssemblyReference.cache

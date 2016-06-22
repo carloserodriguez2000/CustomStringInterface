@@ -21,12 +21,13 @@ namespace CustomStringInterface
        
         public void Insert(string strngToInsert)                    //INTERFACE IMPLEMENTATION
         {
-            theString.Insert(theString.Count(), strngToInsert);
+            theString = theString.Insert(theString.Count(), strngToInsert);
         }
 
         public void Remove(int startIndex, int numCharsToRemove)    //INTERFACE IMPLEMENTATION
         {
-            theString.Remove(startIndex, numCharsToRemove);
+            theString = theString.Remove(startIndex, numCharsToRemove);
+            
         }
     }
 }

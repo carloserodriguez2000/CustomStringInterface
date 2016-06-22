@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="CustomLinkedListString.cs" />
     <Compile Include="ICustomString.cs" />
+    <Compile Include="LLTest.cs" />
     <Compile Include="NodeChar.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

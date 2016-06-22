@@ -6,87 +6,61 @@ using System.Threading.Tasks;
 
 namespace CustomStringInterface
 {
-    class SystemLinkedListString : ICustomString
+    class SystemLinkedListString //: ICustomString
     {
-        private MyNode<char> _Head;
-        // OR get { return _Head;} set { _Head = value; }
-        // OR  public NodeChar _Head { get; set; }
+        LinkedList<char> sysLinkedList;
 
         public int Length()
         {
-            int length = 0;
-            MyNode<char> nodePtr = _Head;
-
-            do
-            {
-                length++;
-                nodePtr = nodePtr.NextNode;
-            } while (nodePtr != null);            
-            return length;
+            return sysLinkedList.Count;
         }
         
-        private void PatchSegment(string strngToInsert, MyNode<char> nodePtr)
-        {
-            int i = 0;
-
-            if (nodePtr == null)
-            {
-                 nodePtr = new MyNode<char>(strngToInsert[0]);
-                _Head = nodePtr;
-                i = 1;
-            }
-
-            for (; i < strngToInsert.Length; i++) // intial i=1 when adding the first string, i=0 afterwards
-            {
-                nodePtr.NextNode = new MyNode<char>(strngToInsert[i]);
-                nodePtr = nodePtr.NextNode;
-            }
-        }
         public SystemLinkedListString( string strngToInsert)
         {
-            if (strngToInsert == null)
+            sysLinkedList = new LinkedList<char>();
+
+            for (int i = 0; i < strngToInsert.Length; i++)
             {
-                //error. 
-            }
-            else
-            {
-                PatchSegment(strngToInsert, _Head);
+                LinkedListNode<char> llNode = new LinkedListNode<char>(strngToInsert[i]);
+                sysLinkedList.AddLast(llNode);
             }
         }
 
         public void Insert(string strngToInsert)
         {
-            if (strngToInsert == null)
+            for (int i = 0; i < strngToInsert.Length; i++)
             {
-                //error
-            }
-            else
-            {
-                MyNode<char> nodePtr =_Head;
-                while (nodePtr.NextNode != null) // FIND THE END OF THE LIST
-                {
-                    nodePtr = nodePtr.NextNode;
-                }
-                ///////////// NEXT PATCH THE NEW STRING /////////
-                PatchSegment(strngToInsert, nodePtr);
-                
+                LinkedListNode<char> llNode = new LinkedListNode<char>(strngToInsert[i]);
+                sysLinkedList.AddLast(llNode);
             }
         }
 
-        public void Remove(int startIndex, int numCharsToRemove)
+        public void Remove(int startIndex, int numCharsToRemove) 
         {
-
+            if ( (startIndex + numCharsToRemove)  <= sysLinkedList.Count  )
+            {
+                LinkedListNode<char> nodePtr = sysLinkedList.First;
+                for (int i = 0; i < startIndex; i++)                // TRAVERSE TO THE LOCATION "startIndex"
+                {
+                    nodePtr = nodePtr.Next;
+                }
+                for (int i = 0; i < numCharsToRemove; i++)          // START REMOVING "numCharsToRemove "NODES
+                {
+                    LinkedListNode<char> nodePtrNext = nodePtr.Next;
+                    sysLinkedList.Remove(nodePtr);
+                    nodePtr = nodePtrNext;
+                }
+            }
         }
 
         public  override string ToString()
         {
-            MyNode<char> nodePtr = _Head;
-            string theStr = _Head.TValue.ToString();
-            int theLength = this.Length();
-            for (int i = 1; i < theLength; i++)
+            string theStr=null;
+
+            //theStr = sysLinkedList.ToString();
+            foreach (var item in sysLinkedList)
             {
-                theStr += nodePtr.NextNode.TValue.ToString();
-                nodePtr = nodePtr.NextNode;
+                theStr += item.ToString();
             }
             return theStr;
         }
