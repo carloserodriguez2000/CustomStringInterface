@@ -69,14 +69,12 @@ namespace CustomStringInterface
                 }
                 ///////////// NEXT PATCH THE NEW STRING /////////
                 PatchSegment(strngToInsert, nodePtr);
-
             }
         }
 
         public void Remove(int startIndex, int numCharsToRemove)
         {
-            MyNode<char> nodePtrpPrevious=null
-                ;
+            MyNode<char> nodePtrpPrevious=null;
             if ((startIndex + numCharsToRemove) <= this.Length())
             {
                 MyNode<char> nodePtr = _Head;

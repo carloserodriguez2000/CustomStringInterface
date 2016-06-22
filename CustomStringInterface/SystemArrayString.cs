@@ -8,48 +8,52 @@ namespace CustomStringInterface
 {
     class SystemArrayString : ICustomString
     {
-        char[] sysArrayList ;
+        Array sysArrayList;                     //char[] sysArrayList; //=  Array.CreateInstance(typeof(char),
+       
         public int Length()
         {
-            int length = sysArrayList.Count();
+            int length = sysArrayList.Length;
             return length;
         }
-        public SystemArrayString(string strngToInsert)
+        public SystemArrayString(string strngToInsert)          //CONSTRUCTOR
         {
-            //CONSTRUCTOR
             sysArrayList = strngToInsert.ToArray();
         }
 
         public void Insert(string strngToInsert)
         {
-            int newLength       = sysArrayList.Count() + strngToInsert.Count();
-   
-            char [] biggerArray = new char [newLength];
-            sysArrayList.CopyTo(biggerArray, 0);
-
-            for (int i = sysArrayList.Count(), j = 0; i < newLength; i++, j++)
-            {
-                biggerArray[i] = strngToInsert[j];
-            }
+            int newLength     = sysArrayList.Length + strngToInsert.Count();
+            Array biggerArray = Array.CreateInstance(typeof(char), newLength);
+            System.Array.Copy(sysArrayList, 0, biggerArray, 0, sysArrayList.Length);
+            System.Array.Copy(strngToInsert.ToArray(), 0, biggerArray, sysArrayList.Length, strngToInsert.Count());
             sysArrayList = biggerArray;
         }
 
         public void Remove(int startIndex, int numCharsToRemove)
         {
-
+            for (int i = startIndex; i < sysArrayList.Length; i++)
+            {
+                if (i + numCharsToRemove < sysArrayList.Length) // dont go past the end
+                {
+                    sysArrayList.SetValue(sysArrayList.GetValue(i + numCharsToRemove), i);
+                }
+                else
+                {
+                    sysArrayList.SetValue(null, i);             // set to null the end of the array
+                }
+            }
+            Array smallerArray = Array.CreateInstance(typeof(char), sysArrayList.Length- numCharsToRemove);
+            System.Array.Copy(sysArrayList, 0, smallerArray, 0, smallerArray.Length);
+            sysArrayList = smallerArray;
         }
 
         public override string ToString()
         {
-
             string theStr = null;
-
-            //theStr = sysArrayList.ToString();
-            foreach (var item in sysArrayList)
+            foreach (var item in sysArrayList)   //theStr = sysArrayList.ToString();
             {
                 theStr += item.ToString();
             }
-
             return theStr;
         }
     }

@@ -59,6 +59,9 @@ namespace CustomStringInterface
             Console.WriteLine(MySysArrayList.ToString());
             MySysArrayList.Insert(" Adding to the Array");
             Console.WriteLine(MySysArrayList.ToString());
+            MySysArrayList.Remove(12, 3);
+            Console.WriteLine(MySysArrayList.ToString());
+
             Console.ReadLine();
 
             ////////////////////////////////////////////////////////////////////////
